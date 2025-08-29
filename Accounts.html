@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - FACS Herbs</title>
+    <meta name="description" content="Login or create an account with FACS Herbs to access exclusive features and manage your orders.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles - matching index.html */
+        .announcement-bar {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .announcement-bar a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .main-header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo h1 {
+            color: #4CAF50;
+            font-size: 24px;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-list a:hover {
+            color: #4CAF50;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 4px;
+            padding: 10px 0;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f5f5f5;
+            color: #4CAF50;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-box input {
+            border: none;
+            padding: 8px 12px;
+            outline: none;
+            width: 180px;
+        }
+
+        .search-box button {
+            background: #f5f5f5;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-icons a {
+            color: #333;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .header-icons a:hover {
+            color: #4CAF50;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Mobile menu */
+        .mobile-nav {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 99;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+        }
+
+        .mobile-nav-list li {
+            margin-bottom: 15px;
+        }
+
+        .mobile-nav-list a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            display: block;
+            padding: 10px 0;
+        }
+
+        .mobile-nav-list .dropdown-content {
+            position: static;
+            box-shadow: none;
+            display: none;
+            padding-left: 20px;
+        }
+
+        .mobile-nav-list .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background-color: #f5f5f5;
+            padding: 15px 0;
+            margin-bottom: 30px;
+        }
+
+        .breadcrumb-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            color: #777;
+        }
+
+        /* Account section */
+        .account-section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #4CAF50;
+            font-size: 32px;
+        }
+
+        .account-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .login-form, .register-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            position: relative;
+        }
+
+        .form-title {
+            margin-bottom: 20px;
+            color: #4CAF50;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 40px 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        .required {
+            color: #e53935;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input {
+            margin-right: 8px;
+            width: auto;
+        }
+
+        .forgot-password {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #388E3C;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .form-footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: #e53935;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-group.error input {
+            border-color: #e53935;
+        }
+
+        .form-group.success input {
+            border-color: #4CAF50;
+        }
+
+        .form-group i.validation-icon {
+            position: absolute;
+            right: 12px;
+            top: 38px;
+            font-size: 18px;
+            visibility: hidden;
+        }
+
+        .form-group.success i.fa-check-circle {
+            color: #4CAF50;
+            visibility: visible;
+        }
+
+        .form-group.error i.fa-exclamation-circle {
+            color: #e53935;
+            visibility: visible;
+        }
+
+        /* Password toggle button */
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 38px;
+            cursor: pointer;
+            color: #777;
+            z-index: 2;
+        }
+
+        .password-toggle:hover {
+            color: #4CAF50;
+        }
+
+        /* Error summary */
+        .error-summary {
+            background-color: #ffebee;
+            border-left: 4px solid #e53935;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .error-summary h3 {
+            color: #e53935;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .error-summary ul {
+            list-style-type: none;
+        }
+
+        .error-summary li {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        /* Password strength indicator */
+        .password-strength {
+            height: 5px;
+            margin-top: 8px;
+            border-radius: 3px;
+            background-color: #eee;
+            position: relative;
+            display: none;
+        }
+
+        .password-strength span {
+            position: absolute;
+            height: 100%;
+            border-radius: 3px;
+            width: 0;
+            transition: width 0.3s, background-color 0.3s;
+        }
+
+        /* Success message styling */
+        .success-message {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .success-message p {
+            color: #2E7D32;
+            margin: 0;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Cart Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        #cart-items {
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+        }
+
+        #cart-items li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #total-price {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 20px 0;
+            text-align: right;
+        }
+
+        #checkout {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        #checkout:hover {
+            background-color: #388E3C;
+        }
+
+        .clear-cart {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .clear-cart:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: #2E7D32;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .account-container {
+                flex-direction: column;
+            }
+            
+            .login-form, .register-form {
+                max-width: 100%;
+            }
+            
+            .nav-list {
+                display: none;
+            }
+            
+            .header-actions {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .search-box input {
+                width: 120px;
+            }
+            
+            .mobile-nav.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <p>Facs Organics    <a href="#">Shop Now</a></p>
+    </div>
+
+    <!-- Header with Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>FACS Herbs</h1>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categories <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#">Fruits and Nuts </a>
+                            <a href="#">Ayurveda</a>
+                            <a href="#">Western Herbs</a>
+                            <a href="#">Species</a>
+                            <a href="#">Oils</a>
+                            <a href="#">Seeds</a>
+                            <a href="#">Supplements</a>
+                            <a href="#">Honey</a>
+                            <a href="#">Salts</a>
+                        </div>
+                    </li>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search products...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="header-icons">
+                    <a href="Accounts.html" class="account-icon"><i class="far fa-user"></i></a>
+                    <div class="cart-icon" id="cart-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-menu-toggle" id="mobile-menu-button">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li class="dropdown">
+                    <a href="#" id="categories-toggle">Categories <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#">Fruits and Nuts </a>
+                        <a href="#">Ayurveda</a>
+                        <a href="#">Western Herbs</a>
+                        <a href="#">Species</a>
+                        <a href="#">Oils</a>
+                        <a href="#">Seeds</a>
+                        <a href="#">Supplements</a>
+                        <a href="#">Honey</a>
+                        <a href="#">Salts</a>
+                    </div>
+                </li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li>
+                    <div class="search-box">
+                        <input type="text" placeholder="Search products...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="index.html">Home</a> > <span>My Account</span>
+        </div>
+    </div>
+
+    <!-- Account Section -->
+    <section class="account-section">
+        <div class="container">
+            <h2 class="section-title">MY ACCOUNT</h2>
+            <div class="account-container">
+                <!-- Login Form -->
+                <div class="login-form">
+                    <h3 class="form-title">Login</h3>
+                    
+                    <div id="login-success" class="success-message">
+                        <p>Login successful! Redirecting...</p>
+                    </div>
+                    
+                    <div id="login-error-summary" class="error-summary">
+                        <h3>Please correct the following errors:</h3>
+                        <ul id="login-error-list"></ul>
+                    </div>
+                    
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="login-email">Email address <span class="required">*</span></label>
+                            <input type="email" id="login-email" name="email" required>
+                            <i class="fas fa-check-circle validation-icon"></i>
+                            <i class="fas fa-exclamation-circle validation-icon"></i>
+                            <div class="error-message" id="login-email-error">Please enter a valid email address</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password <span class="required">*</span></label>
+                            <input type="password" id="login-password" name="password" required>
+                            <span class="password-toggle" id="login-password-toggle">
+                                <i class="far fa-eye"></i>
+                            </span>
+                            <i class="fas fa-check-circle validation-icon"></i>
+                            <i class="fas fa-exclamation-circle validation-icon"></i>
+                            <div class="error-message" id="login-password-error">Password is required</div>
+                        </div>
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <a href="#" class="forgot-password" id="forgot-password-link">Lost your password?</a>
+                        </div>
+                        <button type="submit" class="btn" id="login-btn">
+                            <span class="spinner" id="login-spinner"></span>
+                            <span>Log In</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Register Form -->
+                <div class="register-form">
+                    <h3 class="form-title">Register</h3>
+                    
+                    <div id="register-success" class="success-message">
+                        <p>Registration successful! You can now login.</p>
+                    </div>
+                    
+                    <div id="register-error-summary" class="error-summary">
+                        <h3>Please correct the following errors:</h3>
+                        <ul id="register-error-list"></ul>
+                    </div>
+                    
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="reg-username">Username <span class="required">*</span></label>
+                            <input type="text" id="reg-username" name="username" required>
+                            <i class="fas fa-check-circle validation-icon"></i>
+                            <i class="fas fa-exclamation-circle validation-icon"></i>
+                            <div class="error-message" id="reg-username-error">Username must be at least 3 characters</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">Email address <span class="required">*</span></label>
+                            <input type="email" id="reg-email" name="email" required>
+                            <i class="fas fa-check-circle validation-icon"></i>
+                            <i class="fas fa-exclamation-circle validation-icon"></i>
+                            <div class="error-message" id="reg-email-error">Please enter a valid email address</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-password">Password <span class="required">*</span></label>
+                            <input type="password" id="reg-password" name="password" required>
+                            <span class="password-toggle" id="reg-password-toggle">
+                                <i class="far fa-eye"></i>
+                            </span>
+                            <i class="fas fa-check-circle validation-icon"></i>
+                            <i class="fas fa-exclamation-circle validation-icon"></i>
+                            <div class="error-message" id="reg-password-error">Password must be at least 8 characters</div>
+                            <div class="password-strength">
+                                <span id="password-strength-bar"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-confirm-password">Confirm Password <span class="required">*</span></label>
+                            <input type="password" id="reg-confirm-password" name="confirm-password" required>
+                            <span class="password-toggle" id="confirm-password-toggle">
+                                <i class="far fa-eye"></i>
+                            </span>
+                            <i class="fas fa-check-circle validation-icon"></i>
+                            <i class="fas fa-exclamation-circle validation-icon"></i>
+                            <div class="error-message" id="reg-confirm-password-error">Passwords do not match</div>
+                        </div>
+                        <button type="submit" class="btn" id="register-btn">
+                            <span class="spinner" id="register-spinner"></span>
+                            <span>Register</span>
+                        </button>
+                        <div class="form-footer">
+                            <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="#">privacy policy</a>.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-cart">&times;</button>
+            <h2>Your Cart</h2>
+            <ul id="cart-items">
+                <li>Your cart is currently empty</li>
+            </ul>
+            <p id="total-price">Total: $0.00</p>
+            <button id="checkout">Proceed to Checkout</button>
+            <button class="clear-cart" id="clear-cart">Clear Cart</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>FACS Herbs</h3>
+                <p>Providing the highest quality organic herbs, spices, and natural products since 2010.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#">Organic Herbs</a></li>
+                    <li><a href="#">Spices</a></li>
+                    <li><a href="#">Teas</a></li>
+                    <li><a href="#">Essential Oils</a></li>
+                    <li><a href="#">Supplements</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Information</h3>
+                <ul>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Herb Street, Plant City</li>
+                    <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                    <li><i class="fas fa-envelope"></i> info@facsherbs.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 5PM</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 FACS Herbs. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // Firebase configuration (same as in index.html)
+        const firebaseConfig = {
+            apiKey: "AI2aSysAavZp9PWCA7--0e6k81MisPH12GDVto",
+            authDomain: "face-organics.firebaseapp.com",
+            projectId: "face-organics",
+            storageBucket: "face-organics.firebasestorage.app",
+            messagingSenderId: "464351186648",
+            appId: "1:464351186648:web:4i7ef5a56edf29e5c11ad",
+            measurementId: "G-5286403BWV"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileNav = document.getElementById('mobile-nav');
+        const categoriesToggle = document.getElementById('categories-toggle');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileNav.classList.toggle('active');
+        });
+        
+        if (categoriesToggle) {
+            categoriesToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.parentElement.classList.toggle('active');
+            });
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileNav.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileNav.classList.remove('active');
+            }
+        });
+        
+        // Cart functionality
+        const cartButton = document.getElementById('cart-button');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCart = document.getElementById('close-cart');
+        const clearCartButton = document.getElementById('clear-cart');
+        const cartItems = document.getElementById('cart-items');
+        const totalPrice = document.getElementById('total-price');
+        const cartCount = document.querySelector('.cart-count');
+        
+        if (cartButton) {
+            cartButton.addEventListener('click', function() {
+                cartModal.style.display = 'block';
+            });
+        }
+        
+        if (closeCart) {
+            closeCart.addEventListener('click', function() {
+                cartModal.style.display = 'none';
+            });
+        }
+        
+        if (clearCartButton) {
+            clearCartButton.addEventListener('click', function() {
+                cartItems.innerHTML = '<li>Your cart is currently empty</li>';
+                totalPrice.textContent = 'Total: $0.00';
+                cartCount.textContent = '0';
+            });
+        }
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === cartModal) {
+                cartModal.style.display = 'none';
+            }
+        });
+        
+        // Password visibility toggle function
+        function setupPasswordToggle() {
+            const toggleButtons = document.querySelectorAll('.password-toggle');
+            
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const input = this.previousElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else {
+                        input.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            });
+        }
+
+        // Form validation functions
+        function showError(input, message) {
+            const formGroup = input.parentElement;
+            formGroup.classList.remove('success');
+            formGroup.classList.add('error');
+            const errorMessage = formGroup.querySelector('.error-message');
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            return false;
+        }
+        
+        function showSuccess(input) {
+            const formGroup = input.parentElement;
+            formGroup.classList.remove('error');
+            formGroup.classList.add('success');
+            const errorMessage = formGroup.querySelector('.error-message');
+            errorMessage.style.display = 'none';
+            return true;
+        }
+        
+        // Field validation functions
+        function validateUsername(username) {
+            if (username.value.trim() === '') {
+                return showError(username, 'Username is required');
+            } else if (username.value.length < 3) {
+                return showError(username, 'Username must be at least 3 characters');
+            } else {
+                return showSuccess(username);
+            }
+        }
+        
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            
+            if (email.value.trim() === '') {
+                return showError(email, 'Email is required');
+            } else if (!re.test(email.value.trim())) {
+                return showError(email, 'Please enter a valid email address');
+            } else {
+                return showSuccess(email);
+            }
+        }
+        
+        function validatePassword(password) {
+            if (password.value.trim() === '') {
+                return showError(password, 'Password is required');
+            } else if (password.value.length < 8) {
+                return showError(password, 'Password must be at least 8 characters');
+            } else {
+                return showSuccess(password);
+            }
+        }
+        
+        function validateConfirmPassword(password, confirmPassword) {
+            if (confirmPassword.value.trim() === '') {
+                return showError(confirmPassword, 'Please confirm your password');
+            } else if (confirmPassword.value !== password.value) {
+                return showError(confirmPassword, 'Passwords do not match');
+            } else {
+                return showSuccess(confirmPassword);
+            }
+        }
+        
+        // Password strength indicator
+        function checkPasswordStrength(password) {
+            const strengthBar = document.getElementById('password-strength-bar');
+            const strengthContainer = document.querySelector('.password-strength');
+            let strength = 0;
+            
+            if (password.length === 0) {
+                strengthContainer.style.display = 'none';
+                return;
+            } else {
+                strengthContainer.style.display = 'block';
+            }
+            
+            // Check password strength criteria
+            if (password.length >= 8) strength += 25;
+            if (/[A-Z]/.test(password)) strength += 25;
+            if (/[0-9]/.test(password)) strength += 25;
+            if (/[^A-Za-z0-9]/.test(password)) strength += 25;
+            
+            // Update strength bar
+            strengthBar.style.width = strength + '%';
+            
+            // Update color based on strength
+            if (strength < 50) {
+                strengthBar.style.backgroundColor = '#e53935';
+            } else if (strength < 75) {
+                strengthBar.style.backgroundColor = '#ff9800';
+            } else {
+                strengthBar.style.backgroundColor = '#4CAF50';
+            }
+        }
+        
+        // Real-time validation
+        document.getElementById('reg-username').addEventListener('blur', function() {
+            validateUsername(this);
+        });
+        
+        document.getElementById('reg-email').addEventListener('blur', function() {
+            validateEmail(this);
+        });
+        
+        document.getElementById('reg-password').addEventListener('blur', function() {
+            validatePassword(this);
+        });
+        
+        document.getElementById('reg-password').addEventListener('input', function() {
+            checkPasswordStrength(this.value);
+        });
+        
+        document.getElementById('reg-confirm-password').addEventListener('blur', function() {
+            validateConfirmPassword(document.getElementById('reg-password'), this);
+        });
+        
+        document.getElementById('login-email').addEventListener('blur', function() {
+            if (this.value.trim() === '') {
+                showError(this, 'Email is required');
+            } else {
+                showSuccess(this);
+            }
+        });
+        
+        document.getElementById('login-password').addEventListener('blur', function() {
+            if (this.value.trim() === '') {
+                showError(this, 'Password is required');
+            } else {
+                showSuccess(this);
+            }
+        });
+        
+        // Firebase Authentication Functions
+        function loginUser(email, password) {
+            const loginBtn = document.getElementById('login-btn');
+            const loginSpinner = document.getElementById('login-spinner');
+            
+            // Show loading state
+            loginBtn.disabled = true;
+            loginSpinner.style.display = 'inline-block';
+            
+            return auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    console.log('User logged in:', user.email);
+                    
+                    // Show success message
+                    document.getElementById('login-success').style.display = 'block';
+                    document.getElementById('login-error-summary').style.display = 'none';
+                    
+                    // Redirect after delay
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                    
+                    return user;
+                })
+                .catch((error) => {
+                    // Handle errors
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error('Login error:', errorCode, errorMessage);
+                    
+                    // Show error message
+                    const errorList = document.getElementById('login-error-list');
+                    errorList.innerHTML = `<li>${getFriendlyErrorMessage(errorCode)}</li>`;
+                    document.getElementById('login-error-summary').style.display = 'block';
+                    
+                    throw error;
+                })
+                .finally(() => {
+                    // Reset loading state
+                    loginBtn.disabled = false;
+                    loginSpinner.style.display = 'none';
+                });
+        }
+        
+        function registerUser(email, password, username) {
+            const registerBtn = document.getElementById('register-btn');
+            const registerSpinner = document.getElementById('register-spinner');
+            
+            // Show loading state
+            registerBtn.disabled = true;
+            registerSpinner.style.display = 'inline-block';
+            
+            return auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    
+                    // Update user profile with username
+                    return user.updateProfile({
+                        displayName: username
+                    }).then(() => {
+                        // Save additional user data to Firestore
+                        return db.collection('users').doc(user.uid).set({
+                            username: username,
+                            email: email,
+                            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                    }).then(() => {
+                        console.log('User registered:', user.email);
+                        
+                        // Show success message
+                        document.getElementById('register-success').style.display = 'block';
+                        document.getElementById('register-error-summary').style.display = 'none';
+                        
+                        // Clear form
+                        document.getElementById('registerForm').reset();
+                        document.querySelector('.password-strength').style.display = 'none';
+                        
+                        return user;
+                    });
+                })
+                .catch((error) => {
+                    // Handle errors
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error('Registration error:', errorCode, errorMessage);
+                    
+                    // Show error message
+                    const errorList = document.getElementById('register-error-list');
+                    errorList.innerHTML = `<li>${getFriendlyErrorMessage(errorCode)}</li>`;
+                    document.getElementById('register-error-summary').style.display = 'block';
+                    
+                    throw error;
+                })
+                .finally(() => {
+                    // Reset loading state
+                    registerBtn.disabled = false;
+                    registerSpinner.style.display = 'none';
+                });
+        }
+        
+        function getFriendlyErrorMessage(errorCode) {
+            switch(errorCode) {
+                case 'auth/email-already-in-use':
+                    return 'This email is already registered. Please try logging in.';
+                case 'auth/invalid-email':
+                    return 'The email address is not valid.';
+                case 'auth/operation-not-allowed':
+                    return 'Email/password accounts are not enabled. Please contact support.';
+                case 'auth/weak-password':
+                    return 'The password is too weak. Please choose a stronger password.';
+                case 'auth/user-disabled':
+                    return 'This account has been disabled. Please contact support.';
+                case 'auth/user-not-found':
+                    return 'No account found with this email address.';
+                case 'auth/wrong-password':
+                    return 'Incorrect password. Please try again.';
+                default:
+                    return 'An error occurred. Please try again.';
+            }
+        }
+        
+        function sendPasswordResetEmail(email) {
+            return auth.sendPasswordResetEmail(email)
+                .then(() => {
+                    alert('Password reset email sent! Please check your inbox.');
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error('Password reset error:', errorCode, errorMessage);
+                    alert(`Error: ${getFriendlyErrorMessage(errorCode)}`);
+                });
+        }
+        
+        // Form submission handlers with Firebase integration
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            const errorSummary = document.getElementById('login-error-summary');
+            const errorList = document.getElementById('login-error-list');
+            errorList.innerHTML = '';
+            
+            // Validate email
+            const email = document.getElementById('login-email');
+            if (email.value.trim() === '') {
+                isValid = false;
+                showError(email, 'Email is required');
+                errorList.innerHTML += '<li>Email is required</li>';
+            } else {
+                showSuccess(email);
+            }
+            
+            // Validate password
+            const password = document.getElementById('login-password');
+            if (password.value.trim() === '') {
+                isValid = false;
+                showError(password, 'Password is required');
+                errorList.innerHTML += '<li>Password is required</li>';
+            } else {
+                showSuccess(password);
+            }
+            
+            if (isValid) {
+                loginUser(email.value, password.value)
+                    .catch(error => {
+                        // Error handling is done in loginUser function
+                        console.error('Login failed:', error);
+                    });
+            } else {
+                errorSummary.style.display = 'block';
+                errorSummary.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+        
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            const errorSummary = document.getElementById('register-error-summary');
+            const errorList = document.getElementById('register-error-list');
+            errorList.innerHTML = '';
+            
+            // Validate all fields
+            const username = document.getElementById('reg-username');
+            if (!validateUsername(username)) {
+                isValid = false;
+                errorList.innerHTML += '<li>Username must be at least 3 characters</li>';
+            }
+            
+            const email = document.getElementById('reg-email');
+            if (!validateEmail(email)) {
+                isValid = false;
+                errorList.innerHTML += '<li>Please enter a valid email address</li>';
+            }
+            
+            const password = document.getElementById('reg-password');
+            if (!validatePassword(password)) {
+                isValid = false;
+                errorList.innerHTML += '<li>Password must be at least 8 characters</li>';
+            }
+            
+            const confirmPassword = document.getElementById('reg-confirm-password');
+            if (!validateConfirmPassword(password, confirmPassword)) {
+                isValid = false;
+                errorList.innerHTML += '<li>Passwords do not match</li>';
+            }
+            
+            if (isValid) {
+                registerUser(email.value, password.value, username.value)
+                    .catch(error => {
+                        // Error handling is done in registerUser function
+                        console.error('Registration failed:', error);
+                    });
+            } else {
+                errorSummary.style.display = 'block';
+                errorSummary.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+
+        // Forgot password functionality
+        document.getElementById('forgot-password-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = prompt('Please enter your email address:');
+            if (email) {
+                sendPasswordResetEmail(email);
+            }
+        });
+
+        // Initialize password toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            setupPasswordToggle();
+            
+            // Check if user is already logged in
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    // User is signed in, redirect to home page
+                    window.location.href = 'index.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

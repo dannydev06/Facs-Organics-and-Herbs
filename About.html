@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - FACS Herbs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Add this to your style.css file */
+        :root {
+    --primary-color: #4CAF50;
+    --secondary-color: #388E3C;
+    --accent-color: #8BC34A;
+    --text-color: #333;
+    --light-gray: #f5f5f5;
+    --white: #ffffff;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--light-gray);
+        }
+        .about-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/About\ bg..jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px ;
+            border-bottom:  #4CAF50 solid 15px;
+        }
+        .about-section {
+            padding: 60px 3%;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .mission-vision {
+            display: flex;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .mission-box, .vision-box {
+            flex: 1;
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .value-item {
+            text-align: center;
+            padding: 20px;
+        }
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .founder-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin: 60px 0;
+        }
+        .founder-image {
+            width: 300px;
+            border-radius: 8px;
+        }
+        .cta-section {
+            text-align: center;
+            background: #4CAF50;
+            color: white;
+            padding: 60px 20px;
+            margin-top: 40px;
+        }
+        .btn-white {
+            background: white;
+            color: #4CAF50;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn-white:hover{
+            background:var(--secondary-color);
+            color: White;
+            border-bottom:4px solid var(--accent-color) ;
+            transition: all .5s;
+        }
+        @media (max-width: 768px) {
+            .mission-vision, .founder-section {
+                flex-direction: column;
+            }
+            .founder-image {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <h1>Nurturing Wellness Through Nature's Finest Offerings</h1>
+        <p>For over a decade, FACS Herbs has been a trusted source for premium, organic herbs, spices, and natural products, dedicated to enhancing your health and well-being.</p>
+    </section>
+
+    <!-- Our Story -->
+    <section class="about-section">
+        <h2>From a Passion to a Purpose</h2>
+        <p>FACS Herbs began with a simple belief: that everyone deserves access to pure, potent, and affordable natural products. What started as a small family endeavor, sourcing the finest herbs for our own kitchen, blossomed into a mission to share nature's healing power with our community.</p>
+        <p>Founded in 2010 in Lagos, Nigeria, we've grown from a local stall to a trusted online source, but our core values remain unchanged. We are still a family-run business, personally curating every product that bears our name.</p>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="about-section">
+        <h2>Our Guiding Principles</h2>
+        <div class="mission-vision">
+            <div class="mission-box">
+                <h3>Our Mission</h3>
+                <p>To provide ethically sourced, 100% organic herbs and natural products that empower individuals to take charge of their health through safe, effective, and sustainable means.</p>
+            </div>
+            <div class="vision-box">
+                <h3>Our Vision</h3>
+                <p>To become the most trusted and impactful brand in natural wellness, creating a healthier community rooted in the wisdom of nature.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="about-section">
+        <h2>The FACS Herbs Difference</h2>
+        <div class="values-grid">
+            <div class="value-item">
+                <div class="value-icon">🌿</div>
+                <h3>Purity Guaranteed</h3>
+                <p>Every product is 100% organic, non-GMO, and free from harmful additives.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">🌎</div>
+                <h3>Ethically Sourced</h3>
+                <p>We build direct relationships with farmers who use sustainable practices.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">✔️</div>
+                <h3>Quality Tested</h3>
+                <p>Our herbs undergo rigorous quality checks for potency and purity.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">❤️</div>
+                <h3>Community Focused</h3>
+                <p>We're not just a store; we're your partners on your wellness journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Founder -->
+    <section class="about-section">
+        <div class="founder-section">
+            <img src="https://placehold.co/300x400/4CAF50/FFFFFF?text=Founder" alt="Founder of FACS Herbs" class="founder-image">
+            <div>
+                <h2>A Personal Message From Our Founder</h2>
+                <blockquote>"My journey with herbs began in my grandmother's garden. She taught me that nature holds the key to true wellness. At FACS Herbs, we honor that tradition every day by bringing you the same quality and care I would expect for my own family."</blockquote>
+                <p><strong>— Thonia Franklin, Founder</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <h2>Experience the Difference</h2>
+        <p>Ready to embark on a journey to better health? Explore our curated collection of organic products and feel the FACS Herbs difference for yourself.</p>
+        <a href="/shop" class="btn-white">Explore Our Products</a>
+        <a href="/index.html" class="btn-white">Home</a>
+    </section>
+</body>
+</html>
