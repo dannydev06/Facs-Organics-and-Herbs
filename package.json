@@ -1,8 +1,30 @@
 {
-  "devDependencies": {
-    "cypress": "^13.17.0"
-  },
   "dependencies": {
     "firebase": "^12.2.0"
-  }
+  },
+  "name": "facs-organics-and-herbs", 
+  "version": "1.0.0",
+  "description": "Website for Aunty Thonia's business",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test": "npm run cy:run",
+    "test:open": "npm run cy:open",
+    "build": "echo 'No build process needed for static site'",
+    "organize": "echo 'Running organization script' && powershell -File organize.ps1"
+
+},
+  "devDependencies": {
+    "cypress": "^12.17.4",
+    "live-server": "^1.2.2"
+  },
+  "keywords": [
+    "herbs",
+    "organic",
+    "natural-products"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
 }
