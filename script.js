@@ -4,7 +4,7 @@ const cartItemsList = document.getElementById('cart-items');
 const totalPriceElement = document.getElementById('total-price');
 const cartIconBadge = document.querySelector('.cart-count');
 const cartModal = document.getElementById('cart-modal');
-const productAddedPrompt = document.getElementById('product-added-prompt');
+const productAddedPrompt = document.getElementById('product-added-prompt');1
 
 // Mobile menu toggle
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
