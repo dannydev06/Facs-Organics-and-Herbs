@@ -1,0 +1,20 @@
+Project Name: FACS Organics & Herbs
+
+Type: Full-stack e-commerce storefront web application
+
+Purpose: Demonstrates a complete online retail experience with storefront browsing, user accounts, cart and wishlist interactions, and a modern product presentation flow.
+
+Core Technologies:
+- Frontend: HTML, CSS, JavaScript
+- Backend: Node.js, Express
+- Database/Auth: Firebase Firestore and Firebase Authentication
+
+Highlights:
+- Responsive storefront experience
+- Product browsing and category presentation
+- User authentication and profile flows
+- User-friendly storefront experience
+- Backend API for products, users, orders, and auth
+
+Presentation Value:
+This project is suitable for showcasing full-stack development skills, frontend UI implementation, backend API design, and cloud-based integration in a portfolio or interview setting.

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "dependencies": {
     "firebase": "^12.2.0"
   },
@@ -28,3 +29,29 @@
   "author": "Your Name",
   "license": "MIT"
 }
+=======
+  "name": "facs-organics-full-stack",
+  "version": "1.0.0",
+  "description": "Full stack FACS Organics application",
+  "scripts": {
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "frontend": "npx http-server public -p 3000 -c-1 --cors",
+    "backend": "cd server && npm run dev",
+    "start": "concurrently \"npm run frontend\" \"npm run backend:prod\"",
+    "backend:prod": "cd server && npm start",
+    "install-all": "npm install && cd server && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "http-server": "^14.1.1"
+  },
+  "keywords": [
+    "ecommerce",
+    "herbs",
+    "organic",
+    "fullstack"
+  ],
+  "author": "FACS Organics",
+  "license": "MIT"
+}
+>>>>>>> 607642c (Initial clean publish)

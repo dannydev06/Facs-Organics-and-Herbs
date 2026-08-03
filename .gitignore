@@ -11,6 +11,15 @@ build/
 # Environment variables
 .env
 .env.local
+<<<<<<< HEAD
+=======
+server/.env
+server/.env.local
+
+# Firebase credentials
+server/config/*.json
+server/config/*.json.example
+>>>>>>> 607642c (Initial clean publish)
 
 # Logs
 *.log
@@ -32,4 +41,12 @@ Desktop.ini
 *.swo
 
 # OS files
+<<<<<<< HEAD
 .DS_Store
+=======
+.DS_Store
+# Cypress
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+>>>>>>> 607642c (Initial clean publish)

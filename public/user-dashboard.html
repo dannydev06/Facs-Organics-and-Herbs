@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - FACS Herbs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/user-dashboard.css">
+</head>
+<body>
+    <!-- Header (same as index.html) -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>FACS Herbs</h1>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html">Shop</a></li>
+                    <li><a href="/About.html">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="header-icons">
+                    <a href="Accounts.html" class="account-icon"><i class="far fa-user"></i></a>
+                    <div class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>My Account</h1>
+            <p>Welcome back, <span id="user-greeting">User</span></p>
+        </div>
+        
+        <div class="dashboard-tabs">
+            <div class="tab active" data-tab="orders">Order History</div>
+            <div class="tab" data-tab="checkout">Faster Checkout</div>
+            <div class="tab" data-tab="wishlist">Wishlist</div>
+            <div class="tab" data-tab="addresses">Addresses</div>
+            <div class="tab" data-tab="settings">Account Settings</div>
+        </div>
+        
+        <!-- Order History Tab -->
+        <div class="tab-content active" id="orders">
+            <h2 class="section-title">Order History</h2>
+            <div class="orders-container" id="orders-list">
+                <!-- Orders will be loaded dynamically -->
+            </div>
+        </div>
+
+        <!-- Faster Checkout Tab -->
+        <div class="tab-content" id="checkout">
+            <h2 class="section-title">Express Checkout</h2>
+            <div class="checkout-container">
+                <div class="checkout-summary">
+                    <h3 class="summary-title">Order Summary</h3>
+                    <div class="summary-item">
+                        <span>Subtotal (3 items)</span>
+                        <span>₦43,970</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Shipping</span>
+                        <span>₦4,990</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Tax</span>
+                        <span>₦2,640</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span>₦51,600</span>
+                    </div>
+                </div>
+                
+                <div class="checkout-form">
+                    <h3 class="form-title">Shipping Information</h3>
+                    
+                    <div class="saved-addresses" id="checkout-addresses">
+                        <!-- Addresses will be loaded dynamically -->
+                    </div>
+                    
+                    <h3 class="form-title">Payment Method</h3>
+                    
+                    <div class="payment-methods" id="payment-methods">
+                        <!-- Payment methods will be loaded dynamically -->
+                    </div>
+                    
+                    <div class="form-group">
+                        <button class="btn" style="width: 100%">Complete Purchase</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wishlist Tab -->
+        <div class="tab-content" id="wishlist">
+            <h2 class="section-title">Your Wishlist</h2>
+            <div class="wishlist-grid" id="wishlist-items">
+                <!-- Wishlist items will be loaded dynamically -->
+            </div>
+        </div>
+
+        <!-- Addresses Tab -->
+        <div class="tab-content" id="addresses">
+            <h2 class="section-title">Saved Addresses</h2>
+            <div id="addresses-list">
+                <p>You have no saved addresses.</p>
+            </div>
+            <button class="btn" id="add-address-btn">Add New Address</button>
+            
+            <div id="address-form" style="display: none; margin-top: 20px;">
+                <h3>Add New Address</h3>
+                <div class="form-group">
+                    <label for="address-name">Address Name (e.g., Home, Work)</label>
+                    <input type="text" id="address-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="address-street">Street Address</label>
+                    <input type="text" id="address-street" required>
+                </div>
+                <div class="form-group">
+                    <label for="address-city">City</label>
+                    <input type="text" id="address-city" required>
+                </div>
+                <div class="form-group">
+                    <label for="address-state">State</label>
+                    <input type="text" id="address-state" required>
+                </div>
+                <div class="form-group">
+                    <label for="address-zip">ZIP Code</label>
+                    <input type="text" id="address-zip" required>
+                </div>
+                <div class="form-group">
+                    <label for="address-country">Country</label>
+                    <input type="text" id="address-country" required>
+                </div>
+                <div class="form-group">
+                    <label for="address-phone">Phone Number</label>
+                    <input type="tel" id="address-phone" required>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="address-default">
+                        <span class="checkmark"></span>
+                        Set as default address
+                    </label>
+                </div>
+                <button class="btn" id="save-address-btn">Save Address</button>
+                <button class="btn btn-secondary" id="cancel-address-btn">Cancel</button>
+            </div>
+        </div>
+
+        <!-- Account Settings Tab -->
+        <div class="tab-content" id="settings">
+            <h2 class="section-title">Account Settings</h2>
+            
+            <div class="settings-container">
+                <div class="settings-section">
+                    <h3 class="form-title">Profile Information</h3>
+                    <div class="form-group">
+                        <label for="user-name">Full Name</label>
+                        <input type="text" id="user-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-email">Email Address</label>
+                        <input type="email" id="user-email" disabled>
+                        <small>Email cannot be changed. Contact support if needed.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-phone">Phone Number</label>
+                        <input type="tel" id="user-phone">
+                    </div>
+                    <button class="btn" id="save-settings-btn">Save Changes</button>
+                </div>
+                
+                <div class="settings-section">
+                    <h3 class="form-title">Notification Preferences</h3>
+                    <div class="preference-item">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="email-notifications">
+                            <span class="checkmark"></span>
+                            Email notifications
+                        </label>
+                        <small>Receive order updates and promotions via email</small>
+                    </div>
+                    <div class="preference-item">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="sms-notifications">
+                            <span class="checkmark"></span>
+                            SMS notifications
+                        </label>
+                        <small>Receive order updates via text message</small>
+                    </div>
+                    <div class="preference-item">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="newsletter">
+                            <span class="checkmark"></span>
+                            Newsletter subscription
+                        </label>
+                        <small>Receive our monthly newsletter with tips and offers</small>
+                    </div>
+                    <button class="btn" id="save-notifications-btn">Save Preferences</button>
+                </div>
+                
+                <div class="settings-section">
+                    <h3 class="form-title">Security Settings</h3>
+                    <div class="form-group">
+                        <label for="current-password">Current Password</label>
+                        <input type="password" id="current-password">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">New Password</label>
+                        <input type="password" id="new-password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm New Password</label>
+                        <input type="password" id="confirm-password">
+                    </div>
+                    <button class="btn" id="change-password-btn">Change Password</button>
+                </div>
+                
+                <div class="settings-section danger-zone">
+                    <h3 class="form-title">Account Actions</h3>
+                    <div class="danger-actions">
+                        <button class="btn btn-secondary" id="export-data-btn">Export My Data</button>
+                        <button class="btn btn-danger" id="delete-account-btn">Delete Account</button>
+                    </div>
+                    <small class="danger-note">Warning: Account deletion is permanent and cannot be undone.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Your Firebase Configuration -->
+    <script src="../firebase-config.js"></script>
+    
+    <!-- User Dashboard Script -->
+    <script src="/src/scripts/user-dashboard.js"></script>
+</body>
+</html>
